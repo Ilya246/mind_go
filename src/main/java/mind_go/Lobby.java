@@ -50,17 +50,18 @@ public class Lobby {
             p.reset();
             p.admin = wasAdmin;
             
-            Call.label(p.con,"[white]Unit: [gray]Fortress", 360, 11 * 8, 37 * 8);
-            Call.label(p.con,"[white]Unit: [gray]Dagger", 360, 24 * 8, 37 * 8);
-            Call.label(p.con,"[white]Unit: [gray]Mace", 360, 38 * 8, 37 * 8);
+            Call.label(p.con,"[white]Unit: [gray]Fortress\n[accent]Class: [white]Tank", 360, 11 * 8, 35 * 8);
+           Call.label(p.con,"[white]Unit: [gray]Nova\n[accent]Class: [white]Supporte\n[red]WARNING:[gray] nova can't fly", 360, 24 * 8, 35 * 8);
+            Call.label(p.con,"[white]Unit: [gray]Mace\n[accent]Class: [white]Damager", 360, 38 * 8, 35 * 8);
+            Call.label(p.con,"[white]Unit: [gray]Daggerr\n[accent]Class: [white]Omni", 360, 25 * 8, 7 * 8);
             
             Unit fortress = UnitTypes.fortress.create(Team.derelict);
             fortress.set(11 * 8, 40 * 8);
             fortress.add();
             
-            Unit dagger = UnitTypes.dagger.create(Team.derelict);
-            dagger.set(24 * 8, 40 * 8);
-            dagger.add();
+            Unit nova = UnitTypes.nova.create(Team.derelict);
+            nova.set(24 * 8, 40 * 8);
+            nova.add();
             
             Unit mace = UnitTypes.mace.create(Team.derelict);
             mace.set(38 * 8, 40 * 8);
@@ -85,7 +86,7 @@ public class Lobby {
         Vars.logic.reset();
         
         Call.worldDataBegin();
-        Vars.world.loadMap(Vars.maps.byName("pvp_area_" + (Mathf.floor(Mathf.random(3, 4)))));
+        Vars.world.loadMap(Vars.maps.byName("pvp_area_" + (Mathf.floor(Mathf.random(1, 5)))));
         Vars.logic.play();
         
         for(Player p : players) {
