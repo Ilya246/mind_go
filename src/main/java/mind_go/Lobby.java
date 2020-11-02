@@ -53,7 +53,7 @@ public class Lobby {
             Call.label(p.con,"[white]Unit: [gray]Fortress\n[accent]Class: [white]Tank", 360, 11 * 8, 35 * 8);
             Call.label(p.con,"[white]Unit: [gray]Nova\n[accent]Class: [white]Support\n[red]WARNING:[gray] nova can't fly", 360, 24 * 8, 35 * 8);
             Call.label(p.con,"[white]Unit: [gray]Mace\n[accent]Class: [white]Damager", 360, 38 * 8, 35 * 8);
-            Call.label(p.con,"[white]Unit: [gray]Daggerr\n[accent]Class: [white]Omni", 360, 25 * 8, 7 * 8);
+            Call.label(p.con,"[white]Unit: [gray]Dagger\n[accent]Class: [white]Omni", 360, 25 * 8, 7 * 8);
             
             Unit fortress = UnitTypes.fortress.create(Team.derelict);
             fortress.set(11 * 8, 40 * 8);
