@@ -6,8 +6,8 @@
 package mind_go;
 
 import mindustry.content.UnitTypes;
+import mindustry.game.Team;
 import mindustry.gen.Player;
-import mindustry.gen.Unit;
 import mindustry.type.UnitType;
 
 /**
@@ -17,6 +17,7 @@ import mindustry.type.UnitType;
 public class PlayerData {
     UnitType unit = UnitTypes.dagger;
     Player player;
+    Team oldTeam;
     
     public PlayerData(Player player) {
         this.player = player;

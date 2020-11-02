@@ -15,7 +15,9 @@ import mindustry.gen.Groups;
 import mindustry.gen.Unit;
 import mindustry.mod.Plugin;
 import arc.struct.Seq;
+import mindustry.Vars;
 import mindustry.content.Bullets;
+import mindustry.gen.Nulls;
 import mindustry.gen.Player;
 /**
  *
@@ -47,22 +49,40 @@ public class Main extends Plugin {
                 if (unit.isAI() && unit.team != Team.derelict) {
                     unit.kill();
                 }
+                if (spawned && seted && time > waitTime && unit.type == UnitTypes.alpha) {
+                    unit.kill();
+                }
             });
             
             if (time > waitTime && !Lobby.inLobby) {
                 // start game
                 if(!spawned && time > waitTime) {
                     // set team
-
-                    Groups.player.each(player ->{
+                    if (data.size > 0) {
+                        for(PlayerData data : data) {
+                            if (data.oldTeam != null) {
+                                data.player.team(data.oldTeam);
+                            } else {
+                                    if(teamNumber == 0) {
+                                        teamNumber = 1;
+                                        data.player.team(Team.sharded);
+                                    } else {
+                                        teamNumber = 0;
+                                        data.player.team(Team.blue);
+                                  }
+                            }
+                        }
+                    } else {
+                        Groups.player.each(player ->{
                             if(teamNumber == 0) {
                                 teamNumber = 1;
                                 player.team(Team.sharded);
                             } else {
                                 teamNumber = 0;
                                 player.team(Team.blue);
-                            }
+                          }
                         });
+                    }
                     /*
 
                     }
@@ -151,21 +171,26 @@ public class Main extends Plugin {
             bluePlayers = 0;
             
             Groups.unit.each(unit -> {
-                if (unit.team == Team.sharded) {
-                    shardedPlayers++;
-                } if (unit.team == Team.blue) {
-                    bluePlayers++;
+                if(!unit.dead) {
+                    if (unit.team == Team.sharded) {
+                        shardedPlayers++;
+                    } if (unit.team == Team.blue) {
+                        bluePlayers++;
+                    }
                 }
             });
         });
         
         Events.on(EventType.WorldLoadEvent.class, event ->{
+            
             UnitTypes.nova.canBoost = false;
             UnitTypes.mace.health = 350f;
-            UnitTypes.mace.armor = 1;
-            UnitTypes.nova.health = UnitTypes.dagger.health ; 
-            UnitTypes.fortress.armor = UnitTypes.dagger.armor = UnitTypes.nova.armor =+ 2;
+            UnitTypes.mace.armor = 5f;
+            UnitTypes.nova.health = 100f; 
+            UnitTypes.fortress.armor = UnitTypes.dagger.armor = UnitTypes.nova.armor =+ 2f;
             UnitTypes.fortress.weapons.get(0).bullet.damage = Bullets.standardCopper.damage - 5f;
+            UnitTypes.fortress.weapons.get(0).bullet.splashDamage = 10f;
+            
             time = 0;
             spawned = false;
             seted = false;         

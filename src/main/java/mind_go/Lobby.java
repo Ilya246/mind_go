@@ -51,7 +51,7 @@ public class Lobby {
             p.admin = wasAdmin;
             
             Call.label(p.con,"[white]Unit: [gray]Fortress\n[accent]Class: [white]Tank", 360, 11 * 8, 35 * 8);
-           Call.label(p.con,"[white]Unit: [gray]Nova\n[accent]Class: [white]Supporte\n[red]WARNING:[gray] nova can't fly", 360, 24 * 8, 35 * 8);
+            Call.label(p.con,"[white]Unit: [gray]Nova\n[accent]Class: [white]Supporte\n[red]WARNING:[gray] nova can't fly", 360, 24 * 8, 35 * 8);
             Call.label(p.con,"[white]Unit: [gray]Mace\n[accent]Class: [white]Damager", 360, 38 * 8, 35 * 8);
             Call.label(p.con,"[white]Unit: [gray]Daggerr\n[accent]Class: [white]Omni", 360, 25 * 8, 7 * 8);
             
